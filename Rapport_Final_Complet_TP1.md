@@ -459,6 +459,58 @@ La bombe logique partage des mécanismes avec les RAT (Remote Access Trojans) é
 
 ---
 
+---
+
+## 9. Sources et références
+
+### Virologie informatique — Bombes logiques
+
+| Source | Description | Lien |
+|---|---|---|
+| CISA | Définition et analyse des bombes logiques | https://www.cisa.gov/uscert/ncas/tips/ST18-006 |
+| MITRE ATT&CK | Technique T1485 — Data Destruction | https://attack.mitre.org/techniques/T1485/ |
+| MITRE ATT&CK | Technique T1091 — Replication Through Removable Media (vecteur USB) | https://attack.mitre.org/techniques/T1091/ |
+| Wikipedia | Bombe logique — définition et historique | https://fr.wikipedia.org/wiki/Bombe_logique |
+| Kaspersky | Qu'est-ce qu'une bombe logique ? | https://www.kaspersky.fr/resource-center/definitions/logic-bomb |
+
+### Python — Modules utilisés
+
+| Module | Documentation officielle |
+|---|---|
+| `os` | https://docs.python.org/3/library/os.html |
+| `glob` | https://docs.python.org/3/library/glob.html |
+| `shutil` | https://docs.python.org/3/library/shutil.html |
+| `smtplib` | https://docs.python.org/3/library/smtplib.html |
+| `email.mime` | https://docs.python.org/3/library/email.mime.html |
+
+### Cas réels de bombes logiques (contexte historique)
+
+| Incident | Source |
+|---|---|
+| Stuxnet (2010) — vecteur USB | https://www.kaspersky.fr/resource-center/threats/stuxnet-virus |
+| Affaire UBS PaineWebber (2002) — bombe logique insider | https://www.justice.gov/archive/criminal/cybercrime/press-releases/2006/lloydSent.htm |
+| Nortel — sabotage logiciel interne | https://www.cert.org/insider-threat/ |
+
+### Outils de détection mentionnés
+
+| Outil | Lien |
+|---|---|
+| Sysinternals Process Monitor | https://learn.microsoft.com/en-us/sysinternals/downloads/procmon |
+| VirusTotal (analyse de fichiers) | https://www.virustotal.com |
+| Any.run (sandbox dynamique) | https://any.run |
+| Cuckoo Sandbox | https://cuckoosandbox.org |
+| YARA — moteur de règles malware | https://virustotal.github.io/yara/ |
+
+### Environnement technique
+
+| Élément | Référence |
+|---|---|
+| Kali Linux | https://www.kali.org/docs/ |
+| VMware Workstation | https://docs.vmware.com/en/VMware-Workstation-Pro/ |
+| Gmail SMTP (mot de passe d'application) | https://support.google.com/accounts/answer/185833 |
+
+---
+
 *Rapport rédigé dans le cadre du TP N°1 — Module Virologie Informatique*  
 *ESIITECH — Master 1 Informatique — Année universitaire 2025-2026*  
 *Enseignant : Kevin Michel MBA NZUE*
