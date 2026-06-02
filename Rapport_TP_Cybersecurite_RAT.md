@@ -1,8 +1,10 @@
 # Rapport TP Cybersécurité — Étude de Trojans (RAT)
 
-**Étudiant :** Jesse Mpiga  
-**Date de rendu :** 03 juin 2026  
-**Module :** Cybersécurité  
+**Auteure :** NAOMIE NGWIDJOMBY MOUSSAVOU  
+**Module :** Virologie Informatique  
+**Enseignant :** Kevin Michel MBA NZUE  
+**École :** ESIITECH — Année universitaire 2025-2026  
+**Date :** Juin 2026  
 **Environnement de test :** Kali Linux sur VMware — Exécution réelle en VM isolée
 
 > **Note technique — Syntaxe terminal :**
