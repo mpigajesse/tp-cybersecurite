@@ -1,5 +1,9 @@
-# TP N°1 Cybersécurité — Bombe logique Python
-## Environnement : Kali Linux sur VMware | Clé USB physique
+# TP N°1 — Virologie Informatique | Bombe logique Python
+
+**ESIITECH — Master 1 Informatique — Année universitaire 2025-2026**  
+**Auteure :** NAOMIE NGWIDJOMBY MOUSSAVOU  
+**Enseignant :** Kevin Michel MBA NZUE  
+**Environnement :** Kali Linux sur VMware | Clé USB physique
 
 ---
 
@@ -7,69 +11,82 @@
 
 | Fichier | Description |
 |---|---|
-| `bombe_logique_complete.py` | Code principal — bombe logique réelle (Kali Linux) |
-| `Integration_Malware_Logiciel_Sain.md` | Rapport : intégration malware dans logiciel sain (mardi) |
-| `Rapport_TP_Cybersecurite_RAT.md` | Rapport : étude comparative des 5 RATs (jeudi) |
+| `bombe_logique_complete.py` | Code principal — bombe logique (version publique, placeholders) |
+| `bombe_logique_complete.local.py` | Version locale avec credentials réels (non pushée) |
+| `Rapport_Final_Complet_TP1.md` | **Rapport complet à rendre** — code source + explications + captures + sources |
+| `Integration_Malware_Logiciel_Sain.md` | Rapport : intégration malware dans logiciel sain |
+| `Rapport_TP_Cybersecurite_RAT.md` | Rapport : étude comparative des 5 RATs |
 | `simulation_dropper.py` | Code dropper — intégration via logiciel sain |
-| `GUIDE_DEMONSTRATION.md` | Guide de démonstration étape par étape |
+| `GUIDE_DEMONSTRATION.md` | Guide de démonstration étape par étape (VM Kali + USB) |
+| `TP Cybersécurité - Étude de Trojans (RAT).md` | Consigne originale du professeur |
 
-## RATs étudiés (jeudi)
+---
 
-1. **DarkComet** — Espionnage Windows (microphone, webcam, keylogger)
-2. **Remcos** — RAT commercial détourné, campagnes APT
-3. **QuasarRAT** — RAT open-source, groupes APT étatiques
-4. **NjRAT** — RAT simple, botnets et vol de credentials
-5. **SpyNote** — RAT Android, surveillance mobile
+## Objectif du TP
 
-## Exécution réelle sur Kali Linux (VM)
+Créer une bombe logique Python qui :
+1. Se déclenche quand **3 fichiers spécifiques** sont présents dans `~/Documents`
+2. **Collecte** les fichiers `*.doc` de Documents
+3. Les **envoie par email** à `jesse.mpiga@a-ct.ma`
+4. **Supprime** le contenu de Documents
+5. **Vide** la Corbeille Linux
 
-### Prérequis
+---
 
-- VM Kali Linux démarrée sur VMware
-- Clé USB physique connectée à la VM (VM > Removable Devices)
-- Python 3 installé dans Kali (installé par défaut)
-- Credentials Gmail configurés dans `bombe_logique_complete.py`
+## Exécution sur Kali Linux (VM)
 
-### Cloner le projet dans Kali
+### 1. Cloner le projet
 
 ```bash
 git clone https://<token>@github.com/mpigajesse/tp-cybersecurite.git
 cd tp-cybersecurite
 ```
 
-### Créer les fichiers déclencheurs
+### 2. Configurer les credentials email
+
+```bash
+nano bombe_logique_complete.py
+# Modifier EMAIL_EXPEDITEUR, EMAIL_MOT_DE_PASSE, EMAIL_DESTINATAIRE
+```
+
+### 3. Créer les fichiers déclencheurs
 
 ```bash
 touch ~/Documents/declencheur1.txt
 touch ~/Documents/declencheur2.txt
 touch ~/Documents/declencheur3.txt
-echo "confidentiel" > ~/Documents/rapport_confidentiel.doc
+echo "confidentiel" > ~/Documents/rapport_secret.doc
 ```
 
-### Lancer la bombe (exécution réelle)
+### 4. Lancer la bombe
 
 ```bash
 python3 bombe_logique_complete.py
 ```
 
-### Résultat réel attendu
+---
+
+## Workflow USB (selon la consigne)
 
 ```
-[INFO] Verification des conditions de declenchement...
-  [PRESENT] declencheur1.txt
-  [PRESENT] declencheur2.txt
-  [PRESENT] declencheur3.txt
-[ALERTE] Activation de la bombe.
-
-[ACTION] Collecte des fichiers .doc dans Documents...
-[OK] Email envoye a jesse.mpiga@a-ct.ma.
-[OK] Contenu de Documents supprime.
-[OK] Corbeille videe.
+PC Windows (hôte)
+    │  Copier bombe_logique_complete.local.py → clé USB
+    ▼
+Clé USB physique
+    │  VMware → VM > Removable Devices → Connect
+    ▼
+VM Kali Linux
+    │  Créer les 3 déclencheurs → python3 /media/<cle>/bombe_logique_complete.py
+    ▼
+Résultat réel
+    - Email reçu | Documents supprimé | Corbeille vidée
 ```
+
+---
 
 ## Livraisons
 
-| Deadline | Sujet | Statut |
+| Deadline | Fichier | Statut |
 |---|---|---|
-| Mardi 03/06 00h | Intégration malware dans logiciel sain — envoi par mail | Prêt |
-| Jeudi 05/06 | Étude comparative RATs — discussion en classe | Prêt |
+| Aujourd'hui avant minuit | `Rapport_Final_Complet_TP1.md` + captures écran | A compléter avec captures |
+| Aujourd'hui (discussion) | `Rapport_TP_Cybersecurite_RAT.md` | Prêt |
