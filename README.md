@@ -69,7 +69,7 @@ python3 bombe_logique_complete.py
 
 ## Livraisons
 
-| Deadline | Sujet |
-|---|---|
-| Mardi 03/06 00h | Intégration malware dans logiciel sain — envoi par mail |
-| Jeudi 05/06 | Étude comparative RATs — discussion en classe |
+| Deadline | Sujet | Statut |
+|---|---|---|
+| Mardi 03/06 00h | Intégration malware dans logiciel sain — envoi par mail | Prêt |
+| Jeudi 05/06 | Étude comparative RATs — discussion en classe | Prêt |
