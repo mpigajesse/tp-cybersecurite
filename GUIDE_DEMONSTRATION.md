@@ -15,14 +15,42 @@
 
 ---
 
-## Étape 1 — Préparer la clé USB (machine hôte Windows)
+## Workflow complet
 
-Copier le fichier de la bombe sur la clé USB depuis l'Explorateur Windows :
+```
+[PC Windows physique]
+       │
+       │  1. Copier bombe_logique_complete.local.py sur la clé USB
+       ▼
+[Clé USB physique]
+       │
+       │  2. Brancher la clé → VMware → Connect to VM
+       ▼
+[VM Kali Linux]
+       │
+       │  3. Créer les fichiers déclencheurs dans ~/Documents
+       │  4. Exécuter la bombe depuis la clé USB
+       ▼
+[Résultat réel]
+       - Email reçu sur jesse.mpiga@a-ct.ma
+       - ~/Documents vidé
+       - Corbeille vidée
+```
 
-1. Brancher la clé USB sur le PC
-2. Ouvrir l'Explorateur de fichiers (`Win + E`)
-3. Copier `bombe_logique_complete.py` sur la clé USB
-4. Optionnel : renommer le fichier avec un nom trompeur (ex: `update_system.py`)
+---
+
+## Étape 1 — Copier la bombe sur la clé USB (PC Windows physique)
+
+1. Brancher la clé USB sur le **PC Windows hôte**
+2. Ouvrir l'**Explorateur de fichiers** (`Win + E`)
+3. Naviguer vers la clé USB (ex: `Lecteur E:`)
+4. Copier **`bombe_logique_complete.local.py`** sur la clé (version avec tes vrais credentials)
+5. Le renommer en `bombe_logique_complete.py` sur la clé
+
+**Via PowerShell :**
+```powershell
+Copy-Item "bombe_logique_complete.local.py" "E:\bombe_logique_complete.py"
+```
 
 ---
 
