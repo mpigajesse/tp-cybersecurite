@@ -1,0 +1,9 @@
+env/
+.claude/
+simulation_email.txt
+simulation_suppression.txt
+system_data_dump.txt
+DATE_DECLENCHEMENT
+__pycache__/
+*.pyc
+registre_simule.txt
