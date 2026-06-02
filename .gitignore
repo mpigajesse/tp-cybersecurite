@@ -1,6 +1,13 @@
 env/
 .claude/
-bombe_logique_complete.py
+bombe_logique_complete.local.py
+simulation_email.txt
+simulation_suppression.txt
+system_data_dump.txt
+DATE_DECLENCHEMENT
+__pycache__/
+*.pyc
+registre_simule.txt
 simulation_email.txt
 simulation_suppression.txt
 system_data_dump.txt
