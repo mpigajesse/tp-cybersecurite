@@ -1,5 +1,6 @@
 env/
 .claude/
+bombe_logique_complete.py
 simulation_email.txt
 simulation_suppression.txt
 system_data_dump.txt
