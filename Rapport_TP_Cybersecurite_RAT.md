@@ -2,7 +2,8 @@
 
 **Étudiant :** Jesse Mpiga  
 **Date de rendu :** 03 juin 2026  
-**Module :** Cybersécurité
+**Module :** Cybersécurité  
+**Environnement de test :** Kali Linux sur VMware — Exécution réelle en VM isolée
 
 > **Note technique — Syntaxe terminal :**
 > ```
@@ -22,7 +23,7 @@
 
 Un **RAT** (Remote Access Trojan) est un logiciel malveillant qui permet à un attaquant d'obtenir un accès complet et furtif à la machine d'une victime à distance. Contrairement à un accès légitime (TeamViewer, RDP), le RAT s'installe et s'exécute à l'insu de l'utilisateur. Il est généralement distribué via phishing, pièces jointes malveillantes, ou fausses mises à jour logicielles.
 
-Dans ce TP, nous étudions cinq RAT représentatifs ainsi qu'une simulation de bombe logique en Python.
+Dans ce TP, nous étudions cinq RAT représentatifs ainsi qu'une bombe logique Python exécutée en conditions réelles sur une VM Kali Linux.
 
 ---
 
@@ -247,7 +248,7 @@ SpyNote est un RAT conçu spécifiquement pour les appareils Android. Il cible l
 
 ---
 
-## 6. Analyse du code Python — Simulation de bombe logique
+## 6. Analyse du code Python — Bombe logique (exécution réelle sur VM Kali Linux)
 
 ### 6.1 Qu'est-ce qu'une bombe logique ?
 

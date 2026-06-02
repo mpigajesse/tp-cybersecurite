@@ -8,9 +8,10 @@
 | Élément | Détail |
 |---|---|
 | VM | Kali Linux sur VMware |
-| Vecteur d'introduction | Clé USB physique branchée dans la VM |
-| Mode | Réel (VM isolée, aucun risque sur la machine hôte) |
+| Vecteur d'introduction | Clé USB physique connectée à la VM via VMware |
+| Mode | **Réel — actions effectives dans la VM isolée** |
 | Langage | Python 3 |
+| Risque hôte | Aucun — la VM est entièrement isolée |
 
 ---
 
