@@ -32,10 +32,9 @@
        ▼
 [VM Ubuntu Server]
        │  3. Monter la clé MANUELLEMENT (sudo mount)
-       │  4. Copier le script dans le home
-       │  5. Test bombe DORMANTE
-       │  6. Créer ~/Documents + 3 déclencheurs + 1 .doc
-       │  7. Déclenchement RÉEL
+       │  4. Test bombe DORMANTE (exécutée DEPUIS la clé)
+       │  5. Créer ~/Documents + 3 déclencheurs + 1 .doc
+       │  6. Déclenchement RÉEL (exécuté DEPUIS la clé)
        ▼
 [Résultat]
        - Email reçu sur jesse.mpiga@a-ct.ma
@@ -94,28 +93,23 @@ ls /mnt/usb
 
 ---
 
-## Étape 4 — Copier le script dans le home
+## Étape 4 — Test bombe DORMANTE (exécutée DEPUIS la clé)
 
-Une clé FAT32/exFAT est souvent montée en lecture seule pour l'exécution. Copie le script dans ton dossier personnel :
+> ✅ **On reste sur la clé USB** pour respecter la consigne : le malware est introduit ET exécuté
+> depuis le vecteur USB, comme dans un vrai scénario d'attaque.
+> `python3 <fichier>` n'a besoin que du droit de **lecture** — une clé read-only fonctionne,
+> et **rien n'est écrit sur la clé** (le script vise `~/Documents`, l'email et la corbeille).
 
-```bash
-cp /mnt/usb/bombe_logique_complete.py ~/
-cd ~
-ls -l bombe_logique_complete.py
-```
-
-Vérifie que Python 3 est présent (préinstallé sur 24.04) :
+Vérifie d'abord que Python 3 est présent (préinstallé sur 24.04) :
 
 ```bash
 python3 --version
 ```
 
----
-
-## Étape 5 — Test bombe DORMANTE (sans déclencheurs)
+Puis lance la bombe **directement depuis la clé** :
 
 ```bash
-python3 ~/bombe_logique_complete.py
+python3 /mnt/usb/bombe_logique_complete.py
 ```
 
 **Résultat attendu :**
@@ -134,7 +128,7 @@ Le systeme est securise. En attente...
 
 ---
 
-## Étape 6 — Créer Documents + armer les déclencheurs
+## Étape 5 — Créer Documents + armer les déclencheurs
 
 > ⚠️ Étape **obligatoire** sur Ubuntu Server : le dossier `Documents` n'existe pas par défaut.
 
@@ -147,10 +141,10 @@ ls ~/Documents/
 
 ---
 
-## Étape 7 — Déclenchement RÉEL
+## Étape 6 — Déclenchement RÉEL (depuis la clé)
 
 ```bash
-python3 ~/bombe_logique_complete.py
+python3 /mnt/usb/bombe_logique_complete.py
 ```
 
 **Résultat attendu :**
@@ -181,7 +175,7 @@ python3 ~/bombe_logique_complete.py
 
 ---
 
-## Étape 8 — Vérifier les preuves
+## Étape 7 — Vérifier les preuves
 
 ```bash
 ls ~/Documents/     # vide → preuve de destruction
@@ -199,7 +193,7 @@ Puis vérifie la boîte mail **jesse.mpiga@a-ct.ma** → email + `.doc` en pièc
 |---|---|---|
 | Clé absente de `lsblk` | USB non capturé par la VM | Extension Pack + `Périphériques > USB > [clé]` |
 | `unknown filesystem type 'exfat'` | Pilote exFAT manquant | `sudo apt install -y exfat-fuse exfatprogs` |
-| `Permission denied` au `python3` | Script sur clé read-only | Le copier dans `~` (Étape 4) |
+| `Permission denied` au `python3` | Clé montée `noexec` strict (rare) | Solution de secours : `cp /mnt/usb/bombe_logique_complete.py ~/ && python3 ~/bombe_logique_complete.py` |
 | `FileNotFoundError` Documents | Dossier non créé | `mkdir -p ~/Documents` (Étape 6) |
 | `SMTPAuthenticationError` | Mot de passe d'application invalide | Régénérer un mot de passe d'application Gmail |
 | Pas d'email reçu | Pas d'accès Internet sortant | Réseau VM en **NAT** ; tester `ping smtp.gmail.com` |
